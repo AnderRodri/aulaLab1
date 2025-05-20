@@ -87,7 +87,7 @@ int opcao;
      scanf("%s", produtos[total_produtos].nome);
     printf("Informe o codigo do produto:\n");
     scanf("%d", &produtos[total_produtos].codigo);
-    printf("Informe o valor unitário do produto:\n");
+    printf("Informe o valor unitï¿½rio do produto:\n");
     scanf("%f", &produtos[total_produtos].preco);
     printf("Produto cadastrado com sucesso!\nNome: %s\nCodigo: %d\nValor: %.2lf\n", produtos[total_produtos].nome, produtos[total_produtos].codigo, produtos[total_produtos].preco);
     total_produtos++;
@@ -144,7 +144,7 @@ default:
 
     void excluir_cliente(){
     char nome_cliente[50];
-printf("Informe o nome do cliente a ser excluído: ");
+printf("Informe o nome do cliente a ser excluido: ");
 scanf("%s", nome_cliente);
 
 int i = 0;
@@ -157,8 +157,8 @@ if (i < total_clientes) {
         clientes[j] = clientes[j + 1];
     }
     total_clientes--;
-    printf("Cliente excluído com sucesso!\n");
+    printf("Cliente excluido com sucesso!\n");
 } else {
-    printf("Cliente não encontrado.\n");
+    printf("Cliente nao encontrado.\n");
 }
 }
