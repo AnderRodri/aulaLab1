@@ -5,7 +5,9 @@ int cadastro_cliente();
 int cadastro_produto();
 int venda();
 void listar_clientes();
+void listar_produtos();
 void excluir_cliente();
+void excluir_produto();
 
 typedef struct {
    char nome[50];
@@ -31,12 +33,14 @@ int opcao;
 
     do {
         printf("Menu Principal:\n");
+        printf("0 = sair\n");
         printf("1 = cadastrar clientes\n");
         printf("2 = cadastrar produtos\n");
         printf("3 = efetuar uma venda\n");
         printf("4 = listar os clientes\n");
-        printf("5 = excluir um cliente\n");
-        printf("0 = sair\n");
+        printf("5 = listar os produtos\n");
+        printf("6 = excluir um cliente\n");
+        printf("7 = excluir um produto\n");
         printf("Escolha uma opcao:\n");
         scanf("%d", &opcao);
 
@@ -55,7 +59,13 @@ int opcao;
         listar_clientes();
         break;
         case 5:
+        listar_produtos();
+        break;
+        case 6:
         excluir_cliente();
+        break;
+        case 7:
+        excluir_produto();
         break;
         case 0:
         printf("Encerrando o programa...\n");
@@ -87,7 +97,7 @@ int opcao;
      scanf("%s", produtos[total_produtos].nome);
     printf("Informe o codigo do produto:\n");
     scanf("%d", &produtos[total_produtos].codigo);
-    printf("Informe o valor unit�rio do produto:\n");
+    printf("Informe o valor unitario do produto:\n");
     scanf("%f", &produtos[total_produtos].preco);
     printf("Produto cadastrado com sucesso!\nNome: %s\nCodigo: %d\nValor: %.2lf\n", produtos[total_produtos].nome, produtos[total_produtos].codigo, produtos[total_produtos].preco);
     total_produtos++;
@@ -142,6 +152,20 @@ default:
    }
     }
 
+    void listar_produtos() {
+
+    int contador = 0;
+    int i = 0 ;
+    printf("\nListagem de produtos cadastrados:\n\n");
+
+    while(i < total_produtos){
+    printf("%d - %s\n", contador, produtos[i].nome);
+    contador++;
+    i++;
+    }
+    }
+
+
     void excluir_cliente(){
     char nome_cliente[50];
 printf("Informe o nome do cliente a ser excluido: ");
@@ -160,5 +184,26 @@ if (i < total_clientes) {
     printf("Cliente excluido com sucesso!\n");
 } else {
     printf("Cliente nao encontrado.\n");
+}
+}
+
+void excluir_produto() {
+char nome_produto[50];
+printf("Informe o nome do produto a ser excluido: ");
+scanf("%s", nome_produto);
+
+int i = 0;
+while (i < total_produtos && strcmp(produtos[i].nome, nome_produto) != 0) {
+    i++;
+}
+
+if (i < total_produtos) {
+    for (int j = i; j < total_produtos - 1; j++) {
+        produtos[j] = produtos[j + 1];
+    }
+    total_produtos--;
+    printf("Produto excluido com sucesso!\n");
+} else {
+    printf("Produto nao encontrado.\n");
 }
 }
