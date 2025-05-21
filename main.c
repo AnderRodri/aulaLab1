@@ -222,7 +222,7 @@ if (i < total_produtos) {
 void editar_cliente() {
     int escolha;
     printf("Bem vindo a edicao de cliente\n");
-    printf("Deseja visualizar os clientes cadastrados?\n1-Sim\n2-Não\n");
+    printf("Deseja visualizar os clientes cadastrados?\n1-Sim\n2-Nao\n");
     scanf("%d", &escolha);
     if(escolha == 1) {
         listar_clientes();
@@ -233,7 +233,7 @@ void editar_cliente() {
 void editar_produto() {
     int escolha;
     printf("Bem vindo a edicao de produto\n");
-    printf("Deseja visualizar os produtos cadastrados?\n1-Sim\n2-Não\n");
+    printf("Deseja visualizar os produtos cadastrados?\n1-Sim\n2-Nao\n");
     scanf("%d", &escolha);
     if(escolha == 1) {
         listar_produtos();
