@@ -221,24 +221,45 @@ if (i < total_produtos) {
 
 void editar_cliente() {
     int escolha;
+    char nome_cliente[50];
     printf("Bem vindo a edicao de cliente\n");
     printf("Deseja visualizar os clientes cadastrados?\n1-Sim\n2-Nao\n");
     scanf("%d", &escolha);
     if(escolha == 1) {
         listar_clientes();
+        printf("Digite o nome do cliente que deseja editar:\n");
+        scanf("%s", nome_cliente);
+        printf("Qual informacao deseja alterar?:\n1-nome\n2-idade\n3-cpf\n");
     }
-
-
+    else if(escolha == 2) {
+        printf("Digite o nome do cliente que deseja editar:\n");
+         scanf("%s", nome_cliente);
+        printf("Qual informacao deseja alterar?:\n1-nome\n2-idade\n3-cpf\n");
+    }
+    else {
+        printf("Opcao invalida, selecione outra\n");
+        editar_cliente();
+    }
 }
 void editar_produto() {
     int escolha;
+    char nome_produto[50];
     printf("Bem vindo a edicao de produto\n");
     printf("Deseja visualizar os produtos cadastrados?\n1-Sim\n2-Nao\n");
     scanf("%d", &escolha);
     if(escolha == 1) {
         listar_produtos();
+        printf("Digite o nome do produto que deseja editar:\n");
+        scanf("%s", nome_produto);
+        printf("Qual informacao deseja alterar?:\n1-nome\n2-codigo\n3-preco unitario\n");
+    }
+    else if(escolha == 2) {
+        printf("Digite o nome do produto que deseja editar:\n");
+    }
+    else {
+        printf("Opcao invalida, selecione outra\n");
+        editar_produto();
     }
 
 
 }
-    
