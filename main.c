@@ -82,6 +82,7 @@ int opcao;
         break;
         default:
         printf("Opcao Invalida, escolha outra\n");
+        break;
         }
 
     } while(opcao != 0);
@@ -240,3 +241,4 @@ void editar_produto() {
 
 
 }
+    
