@@ -8,6 +8,8 @@ void listar_clientes();
 void listar_produtos();
 void excluir_cliente();
 void excluir_produto();
+void editar_cliente();
+void editar_produto();
 
 typedef struct {
    char nome[50];
@@ -41,6 +43,8 @@ int opcao;
         printf("5 = listar os produtos\n");
         printf("6 = excluir um cliente\n");
         printf("7 = excluir um produto\n");
+        printf("8 = editar um cliente\n");
+        printf("9 = editar um produto\n");
         printf("Escolha uma opcao:\n");
         scanf("%d", &opcao);
 
@@ -66,6 +70,12 @@ int opcao;
         break;
         case 7:
         excluir_produto();
+        break;
+        case 8:
+        editar_cliente();
+        break;
+        case 9:
+        editar_produto();
         break;
         case 0:
         printf("Encerrando o programa...\n");
@@ -206,4 +216,27 @@ if (i < total_produtos) {
 } else {
     printf("Produto nao encontrado.\n");
 }
+}
+
+void editar_cliente() {
+    int escolha;
+    printf("Bem vindo à edição de cliente\n");
+    printf("Deseja visualizar os clientes cadastrados?\n1-Sim\n2-Não\n");
+    scanf("%d", &escolha);
+    if(escolha == 1) {
+        listar_clientes();
+    }
+
+
+}
+void editar_produto() {
+    int escolha;
+    printf("Bem vindo à edição de produto\n");
+    printf("Deseja visualizar os produtos cadastrados?\n1-Sim\n2-Não\n");
+    scanf("%d", &escolha);
+    if(escolha == 1) {
+        listar_produtos();
+    }
+
+
 }
