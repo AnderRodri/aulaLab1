@@ -219,47 +219,103 @@ if (i < total_produtos) {
 }
 }
 
-void editar_cliente() {
-    int escolha;
-    char nome_cliente[50];
+void editar_cliente(){
+
+    char nome[50];
+    int i , opcao, encontrado = 0;
+
     printf("Bem vindo a edicao de cliente\n");
-    printf("Deseja visualizar os clientes cadastrados?\n1-Sim\n2-Nao\n");
-    scanf("%d", &escolha);
-    if(escolha == 1) {
-        listar_clientes();
-        printf("Digite o nome do cliente que deseja editar:\n");
-        scanf("%s", nome_cliente);
-        printf("Qual informacao deseja alterar?:\n1-nome\n2-idade\n3-cpf\n");
-    }
-    else if(escolha == 2) {
-        printf("Digite o nome do cliente que deseja editar:\n");
-         scanf("%s", nome_cliente);
-        printf("Qual informacao deseja alterar?:\n1-nome\n2-idade\n3-cpf\n");
-    }
-    else {
-        printf("Opcao invalida, selecione outra\n");
-        editar_cliente();
-    }
-}
-void editar_produto() {
-    int escolha;
-    char nome_produto[50];
-    printf("Bem vindo a edicao de produto\n");
-    printf("Deseja visualizar os produtos cadastrados?\n1-Sim\n2-Nao\n");
-    scanf("%d", &escolha);
-    if(escolha == 1) {
-        listar_produtos();
-        printf("Digite o nome do produto que deseja editar:\n");
-        scanf("%s", nome_produto);
-        printf("Qual informacao deseja alterar?:\n1-nome\n2-codigo\n3-preco unitario\n");
-    }
-    else if(escolha == 2) {
-        printf("Digite o nome do produto que deseja editar:\n");
-    }
-    else {
-        printf("Opcao invalida, selecione outra\n");
-        editar_produto();
+    listar_clientes();
+    printf("Digite o nome do cliente que deseja editar:\n");
+    scanf("%s", nome);
+
+    for(i = 0; i < total_clientes; i++){
+        if(strcmp(clientes[i].nome, nome) == 0){
+
+            printf("Qual informacao deseja editar?\n1-nome\n2-idade\n3-cpf\n");
+            scanf("%d", &opcao);
+
+            switch(opcao) {
+        case 1:
+            printf("Digite o novo nome:\n");
+            scanf("%s", clientes[i].nome);
+            break;
+
+        case 2:
+            printf("Digite a nova idade:\n");
+            scanf("%d", clientes[i].idade);
+            break;
+
+        case 3:
+            printf("Digite o novo cpf:\n");
+            scanf("%d", clientes[i].cpf);
+            break;
+        default:
+            printf("Opcao invalida, reiniciando o processo...\n");
+            editar_cliente();
+            }
+
+            printf("\n Cliente editado com sucesso!\n");
+
+
+            encontrado = 1;
+            break;
+        }
     }
 
+    if(!encontrado){
+        printf("Cliente nao encontrado, reiniciando o processo...\n");
+        editar_cliente();
+    }
+
+}
+void editar_produto(){
+
+    char nome[50];
+    int i , opcao, encontrado = 0;
+
+    printf("Bem vindo a edicao de produto\n");
+    listar_produtos();
+    printf("Digite o nome do produto que deseja editar:\n");
+    scanf("%s", nome);
+
+    for(i = 0; i < total_produtos; i++){
+        if(strcmp(produtos[i].nome, nome) == 0){
+
+            printf("Qual informacao deseja editar?\n1-nome\n2-preco\n3-codigo\n");
+            scanf("%d", &opcao);
+
+            switch(opcao) {
+        case 1:
+            printf("Digite o novo nome:\n");
+            scanf("%s", produtos[i].nome);
+            break;
+
+        case 2:
+            printf("Digite o novo preco:\n");
+            scanf("%d", produtos[i].preco);
+            break;
+
+        case 3:
+            printf("Digite o novo codigo:\n");
+            scanf("%d", produtos[i].codigo);
+            break;
+        default:
+            printf("Opcao invalida, reiniciando o processo...\n");
+            editar_produto();
+            }
+
+            printf("\n Produto editado com sucesso!\n");
+
+
+            encontrado = 1;
+            break;
+        }
+    }
+
+    if(!encontrado){
+        printf("Produto nao encontrado, reiniciando o processo...\n");
+        editar_produto();
+    }
 
 }
