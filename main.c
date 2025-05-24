@@ -11,6 +11,7 @@ void excluir_produto();
 void editar_cliente();
 void editar_produto();
 
+
 typedef struct {
    char nome[50];
    char cpf[12];
@@ -178,45 +179,55 @@ default:
 
 
     void excluir_cliente(){
-    char nome_cliente[50];
-printf("Informe o nome do cliente a ser excluido: ");
-scanf("%s", nome_cliente);
+   char nome[50];
+   int i, j;
 
-int i = 0;
-while (i < total_clientes && strcmp(clientes[i].nome, nome_cliente) != 0) {
-    i++;
+   printf("Digite o nome do cliente que deseja EXCLUIR:\n");
+   scanf("%s",&nome);
+
+   for(i = 0 ; i < total_clientes; i++){
+
+        if(strcmp(clientes[i].nome, nome) == 0){
+
+            for(j = i; j < total_clientes; j++){
+                clientes[j] = clientes[j + 1];
+            }
+            total_clientes --;
+            printf("\n\n--Cliente %s excluido com sucesso!\n", nome);
+            return 0;
+
+        }
+   }
+    printf("Cliente nao cadastrado!\nReiniciando processo...\n");
+    excluir_cliente();
+
+
 }
 
-if (i < total_clientes) {
-    for (int j = i; j < total_clientes - 1; j++) {
-        clientes[j] = clientes[j + 1];
-    }
-    total_clientes--;
-    printf("Cliente excluido com sucesso!\n");
-} else {
-    printf("Cliente nao encontrado.\n");
-}
-}
+void excluir_produto(){
+   char nome[50];
+   int i, j;
 
-void excluir_produto() {
-char nome_produto[50];
-printf("Informe o nome do produto a ser excluido: ");
-scanf("%s", nome_produto);
+   printf("Digite o nome do produto que deseja EXCLUIR:\n");
+   scanf("%s",&nome);
 
-int i = 0;
-while (i < total_produtos && strcmp(produtos[i].nome, nome_produto) != 0) {
-    i++;
-}
+   for(i = 0 ; i < total_produtos; i++){
 
-if (i < total_produtos) {
-    for (int j = i; j < total_produtos - 1; j++) {
-        produtos[j] = produtos[j + 1];
-    }
-    total_produtos--;
-    printf("Produto excluido com sucesso!\n");
-} else {
-    printf("Produto nao encontrado.\n");
-}
+        if(strcmp(produtos[i].nome, nome) == 0){
+
+            for(j = i; j < total_produtos; j++){
+                produtos[j] = produtos[j + 1];
+            }
+            total_produtos --;
+            printf("\n\n--Produto %s excluido com sucesso!\n", nome);
+            return 0;
+
+        }
+   }
+    printf("Produto nao cadastrado!\nReiniciando processo...\n");
+    excluir_produto();
+
+
 }
 
 void editar_cliente(){
